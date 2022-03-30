@@ -1,0 +1,11 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+	<title>linkedin-svg</title>
+	<style>
+		.s0 { fill: #1b1717 } 
+		.s1 { fill: #ffffff } 
+	</style>
+	<rect id="Layer" class="s0" y=".1" width="128" height="127.9" rx="12"></rect>
+	<path id="Layer" class="s1" d="m24.1 50.1h17.1v54.8h-17.1z"/>
+	<circle id="Layer" class="s1" cx="32.6" cy="32.7" r="9.9"/>
+	<path id="Layer" class="s1" d="m105 104.9h-17v-26.6c0-6.4-0.1-14.6-8.9-14.6-8.9 0-10.2 7-10.2 14.1v27.1h-17.1v-54.8h16.4v7.5h0.2c2.3-4.3 7.9-8.9 16.2-8.9 17.2 0 20.4 11.4 20.4 26.1z"/>
+</svg>

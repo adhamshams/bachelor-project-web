@@ -1,0 +1,9 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+	<title>facebook-svg</title>
+	<style>
+		.s0 { fill: #1b1717 } 
+		.s1 { fill: #ffffff } 
+	</style>
+	<rect id="Layer" class="s0" y=".1" width="128" height="127.9" rx="12"></rect>
+	<path id="Layer" class="s1" d="m115.5 127.7v0.3h-103v-0.3h55.7v-48.1h-16.6v-19.2h16.6v-14.1c0-16.4 10-25.4 24.7-25.4 7 0 13.1 0.6 14.8 0.8v17.1h-10.2c-7.9 0-9.5 3.8-9.5 9.4v12.2h19l-2.4 19.1h-16.6v48.2z"/>
+</svg>
