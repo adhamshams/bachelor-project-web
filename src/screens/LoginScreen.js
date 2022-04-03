@@ -43,10 +43,13 @@ function LoginScreen(props) {
       const res = await signInWithEmailAndPassword(auth, email, password);
       const docRef = doc(db, "users", res.user.uid);
       const docSnap = await getDoc(docRef);
-      docSnap.data().completedProfile ? history.push('/profile') : history.push('/complete')
+      docSnap.data().completedProfile ? history.push('/profile') : history.push('/profile/complete')
+      localStorage.setItem('userAuth', JSON.stringify(res.user))
+      localStorage.setItem('user', JSON.stringify(docSnap.data()))
       setLoading(false)
     }
     catch(err){
+      console.log(err.message)
       setError(true)
       setLoading(false)
     }

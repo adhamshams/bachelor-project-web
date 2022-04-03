@@ -8,7 +8,8 @@ import Footer from "../components/Footer";
 import "react-calendar/dist/Calendar.css"
 import {db, auth} from '../firebase'
 import {createUserWithEmailAndPassword} from 'firebase/auth'
-import {setDoc, doc} from 'firebase/firestore'
+import {setDoc, doc, getDoc} from 'firebase/firestore'
+import Header from "../components/Header";
 
 function SignUp(props) {
 
@@ -254,7 +255,11 @@ function SignUp(props) {
           completedProfile: false,
           symptoms: []
         });
-        history.push('/complete')
+        const docRef = doc(db, "users", res.user.uid);
+        const docSnap = await getDoc(docRef);
+        localStorage.setItem('userAuth', JSON.stringify(res.user))
+        localStorage.setItem('user', JSON.stringify(docSnap.data()))
+        history.push('/profile/complete')
       } catch(err) {
         arr.push(err.message === 'Firebase: Error (auth/email-already-in-use).' ? 'Email already in use' : err.message)
         if(err.message === 'Firebase: Error (auth/email-already-in-use).'){
@@ -309,11 +314,7 @@ function SignUp(props) {
 
   return (
     <Container>
-      <div style={{height: 70, backgroundColor: '#1B1717', flexDirection: 'row', display: 'flex', alignItems: 'center'}}>
-        <div style={{flexDirection: 'row', display: 'flex', alignItems: 'center', cursor: 'pointer', marginLeft: 120}} onClick={() => history.push('/')}>
-            <text style={{color: '#eeebdd', fontFamily: 'roboto-700', fontSize: 25, cursor: 'pointer'}}>Appname</text>
-        </div>
-      </div>
+      <Header />
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
         <label style={{fontFamily: 'Archivo', fontSize: 14, marginTop: 50}}>A P P N A M E</label>
         <label style={{fontFamily: 'Archivo', fontSize: 37, marginTop: 10}}>Account Registration</label>

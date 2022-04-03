@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState } from "react";
 import {Motion, spring} from 'react-motion';
 import { useHistory } from "react-router-dom";
 import Button from "../components/Button";
@@ -19,10 +19,11 @@ function HomeScreen(props) {
   const [hover3, setHover3] = useState('#eeebdd');
   const [hover4, setHover4] = useState('#eeebdd');
   const [hover5, setHover5] = useState('#eeebdd');
+  const [hover6, setHover6] = useState('#eeebdd');
 
-  useEffect(() => {
-    
-  }, []);
+  //localStorage.clear()
+
+  var user = JSON.parse(localStorage.getItem('user'));
 
   return (
     <div style={{display: 'flex', flexDirection: 'column'}}>
@@ -36,7 +37,12 @@ function HomeScreen(props) {
             <text onMouseEnter={() => setHover4('#CE1212')} onMouseLeave={() => setHover4('#eeebdd')} style={{color: hover4, fontFamily: 'roboto-700', fontSize: 18, cursor: 'pointer', marginLeft: 20}}>Support</text>
             <text onMouseEnter={() => setHover5('#CE1212')} onMouseLeave={() => setHover5('#eeebdd')} style={{color: hover5, fontFamily: 'roboto-700', fontSize: 18, cursor: 'pointer', marginLeft: 20}}>Safety</text>
           </div>
-          <Button onClick={() => history.push('/login')} title={'Login'} style={{height: 30, width: 100, marginRight: 120}}/>
+          {localStorage.getItem('userAuth') ?
+          <div onMouseEnter={() => setHover6('#CE1212')} onMouseLeave={() => setHover6('#eeebdd')}  onClick={() => history.push('/profile')} style={{marginRight: 120, display: 'flex', flexDirection: 'row', alignItems: 'center', cursor: 'pointer'}}>
+            <Image src={require('../assets/images/profileicon.png')} style={{height: 30, width: 33, borderRadius: 1000}}/>
+            <text style={{color: hover6, fontFamily: 'roboto-700', fontSize: 18, marginLeft: 10}}>{user.firstName}</text> 
+          </div>
+          : <Button onClick={() => history.push('/login')} title={'Login'} style={{height: 30, width: 100, marginRight: 120}}/>}
         </div>
           <div style={{display: 'flex', flexDirection: 'row', flex: 1, alignItems: 'center', justifyContent: 'space-between'}}> 
             <div style={{display: 'flex', flexDirection: 'column'}}>
