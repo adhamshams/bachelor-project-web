@@ -3,9 +3,7 @@ import styled from "styled-components";
 import RedButton from "../components/RedButton";
 import { useHistory } from "react-router-dom";
 import RedBorderButton from "../components/RedBorderButton";
-import {db, auth} from '../firebase'
-import {signInWithEmailAndPassword} from 'firebase/auth'
-import {getDoc, doc} from 'firebase/firestore'
+import {signInWithEmailAndPassword, onAuthStateChanged, getAuth} from 'firebase/auth'
 
 function LoginScreen(props) {
 
@@ -19,6 +17,18 @@ function LoginScreen(props) {
   const [password, setPassword] = useState('');
 
   const [error, setError] = useState(false);
+
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      history.push('/profile/home')
+    } else {
+      // User is signed out
+    }
+  });
+
 
   useEffect(() => {
     const listener = event => {
@@ -35,21 +45,14 @@ function LoginScreen(props) {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   async function handle(event){
-
     event.preventDefault();
     setLoading(true);
     setError(false)
     try{
-      const res = await signInWithEmailAndPassword(auth, email, password);
-      const docRef = doc(db, "users", res.user.uid);
-      const docSnap = await getDoc(docRef);
-      docSnap.data().completedProfile ? history.push('/profile') : history.push('/profile/complete')
-      localStorage.setItem('userAuth', JSON.stringify(res.user))
-      localStorage.setItem('user', JSON.stringify(docSnap.data()))
+      await signInWithEmailAndPassword(auth, email, password);
       setLoading(false)
     }
     catch(err){
-      console.log(err.message)
       setError(true)
       setLoading(false)
     }
@@ -58,7 +61,7 @@ function LoginScreen(props) {
   return (
     <Container>
       <div style={{height: 70, backgroundColor: '#1B1717', flexDirection: 'row', display: 'flex', alignItems: 'center'}}>
-        <div style={{flexDirection: 'row', display: 'flex', alignItems: 'center', cursor: 'pointer', marginLeft: 120}} onClick={() => history.push('/')}>
+        <div style={{flexDirection: 'row', display: 'flex', alignItems: 'center', cursor: 'pointer', marginLeft: 80}} onClick={() => history.push('/')}>
             <text style={{color: '#eeebdd', fontFamily: 'roboto-700', fontSize: 25, cursor: 'pointer'}}>Appname</text>
         </div>
       </div>

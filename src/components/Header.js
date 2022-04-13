@@ -11,16 +11,16 @@ function Header(props) {
 
   return (
       <div style={{height: 70, backgroundColor: '#1B1717', flexDirection: 'row', display: 'flex', alignItems: 'center'}}>
-        <div style={{flexDirection: 'row', display: 'flex', alignItems: 'center', cursor: 'pointer', marginLeft: 120}} onClick={() => history.push('/')}>
+        <div style={{flexDirection: 'row', display: 'flex', alignItems: 'center', cursor: 'pointer', marginLeft: 80}} onClick={() => history.push('/')}>
           <text style={{color: '#eeebdd', fontFamily: 'roboto-700', fontSize: 25, cursor: 'pointer'}}>Appname</text>
         </div>
         {props.firstName ? 
-        <div onMouseEnter={() => setHover6('#CE1212')} onMouseLeave={() => setHover6('#eeebdd')}  onClick={() => history.push('/profile')} style={{marginRight: 120, height: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center', cursor: 'pointer', marginLeft: 'auto'}}>
-          <Image src={require('../assets/images/profileicon.png')} style={{height: 30, width: 33, borderRadius: 1000}}/>
+        <div onMouseOver={() => setHover6('#CE1212')} onMouseLeave={() => setHover6('#eeebdd')}  onClick={() => history.push('/profile/home')} style={{marginRight: 80, height: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center', cursor: 'pointer', marginLeft: 'auto'}}>
+          <Image src={require('../assets/images/profileicon.png')} style={{height: 30, width: 30, borderRadius: 1000}}/>
           <text style={{color: hover6, fontFamily: 'roboto-700', fontSize: 18, marginLeft: 10}}>{props.firstName}</text> 
         </div>
         : 
-        <Button onClick={() => history.push('/login')} title={'Login'} style={{height: 30, width: 100, marginLeft: 'auto', marginRight: 120}}/>
+        <Button onClick={() => history.push('/login')} title={'Login'} style={{height: 30, width: 100, marginLeft: 'auto', marginRight: 80}}/>
         }
       </div>
   );

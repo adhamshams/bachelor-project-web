@@ -5,7 +5,11 @@ import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import SignUp from './screens/SignUp';
 import Complete from './screens/Complete';
-
+import Profile from './screens/Profile';
+import Vitals from './screens/Vitals';
+import Symptoms from './screens/Symptoms';
+import ReportSymptoms from './screens/ReportSymptoms';
+import Doctors from './screens/Doctors';
 
 function App() {
   return (
@@ -15,6 +19,11 @@ function App() {
         <Route exact path='/login' component={LoginScreen} />
         <Route exact path='/signup' component={SignUp} />
         <Route exact path='/profile/complete' component={Complete} />
+        <Route exact path='/profile/home' component={Profile} />
+        <Route exact path='/profile/vitals' component={Vitals} />
+        <Route exact path='/profile/symptoms' component={Symptoms} />
+        <Route exact path='/profile/doctors' component={Doctors} />
+        <Route exact path='/report/symptoms' component={ReportSymptoms} />
       </Switch>
     </Router>
   );

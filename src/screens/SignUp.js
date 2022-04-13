@@ -6,9 +6,9 @@ import 'react-phone-input-2/lib/material.css'
 import { useHistory } from "react-router-dom";
 import Footer from "../components/Footer";
 import "react-calendar/dist/Calendar.css"
-import {db, auth} from '../firebase'
-import {createUserWithEmailAndPassword} from 'firebase/auth'
-import {setDoc, doc, getDoc} from 'firebase/firestore'
+import {db} from '../firebase'
+import {createUserWithEmailAndPassword, updateProfile, getAuth, onAuthStateChanged} from 'firebase/auth'
+import {setDoc, doc} from 'firebase/firestore'
 import Header from "../components/Header";
 
 function SignUp(props) {
@@ -44,6 +44,17 @@ function SignUp(props) {
     const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   
     const [color, setColor] = useState('red');
+
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        history.push('/profile/home')
+      } else {
+        // User is signed out
+      }
+    });
 
     function getAge(date) {
       var today = new Date();
@@ -255,11 +266,9 @@ function SignUp(props) {
           completedProfile: false,
           symptoms: []
         });
-        const docRef = doc(db, "users", res.user.uid);
-        const docSnap = await getDoc(docRef);
-        localStorage.setItem('userAuth', JSON.stringify(res.user))
-        localStorage.setItem('user', JSON.stringify(docSnap.data()))
-        history.push('/profile/complete')
+        await updateProfile(auth.currentUser, {
+          displayName: firstName
+        });
       } catch(err) {
         arr.push(err.message === 'Firebase: Error (auth/email-already-in-use).' ? 'Email already in use' : err.message)
         if(err.message === 'Firebase: Error (auth/email-already-in-use).'){

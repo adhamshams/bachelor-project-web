@@ -4,13 +4,26 @@ import RedButton from "../components/RedButton";
 import Switch from "react-switch";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import {setDoc, doc, getDoc} from 'firebase/firestore'
+import {updateDoc, doc} from 'firebase/firestore'
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { db } from '../firebase'
 
 function Complete(props) {
 
   const history = useHistory();
-  var user = JSON.parse(localStorage.getItem('user'));
+
+  const [user, setUser] = useState({})
+
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      setUser(user)
+    } else {
+      // User is signed out
+    }
+  });
 
   const [loading, setLoading] = useState(false)
 
@@ -155,7 +168,7 @@ function Complete(props) {
         const firstShotDate = new Date(firstShotYear, firstShotMonth, firstShotDay)
         const secondShotDate = new Date(secondShotYear, secondShotMonth, secondShotDay)
         const boosterShotDate = new Date(boosterShotYear, boosterShotMonth, boosterShotDay)
-        await setDoc(doc(db, "users", JSON.parse(localStorage.getItem('userAuth')).uid), {
+        await updateDoc(doc(db, "users", user.uid), {
           completedProfile: true,
           weight: weight,
           height: height,
@@ -176,10 +189,7 @@ function Complete(props) {
           immunosupressiveDisease: immunoD,
           immunosupressiveMedication: immunoM
         });
-        const docRef = doc(db, "users", JSON.parse(localStorage.getItem('userAuth')).uid);
-        const docSnap = await getDoc(docRef);
-        localStorage.setItem('user', JSON.stringify(docSnap.data()))
-        history.push('/profile')
+        history.push('/profile/home')
       }
     }
   }
@@ -454,7 +464,7 @@ function Complete(props) {
 
   return (
     <div style={{display: 'flex', flexDirection: 'column'}}>
-      <Header firstName={user.firstName}/>
+      <Header firstName={user.displayName}/>
       <label style={{fontFamily: 'Archivo', fontSize: 14, marginTop: 50, textAlign: 'center'}}>A P P N A M E</label>
       <label style={{fontFamily: 'Archivo', fontSize: 37, marginTop: 10, textAlign: 'center'}}>Complete Your Profile</label>
       <label style={{textAlign: 'center', fontFamily: 'Archivo', fontSize: 14, marginTop: 10}}>Fill out information about your medical history to help us get a better understanding of your condition.</label>
