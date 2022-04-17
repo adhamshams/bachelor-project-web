@@ -22,6 +22,7 @@ function Complete(props) {
       setUser(user)
     } else {
       // User is signed out
+      history.push('/')
     }
   });
 

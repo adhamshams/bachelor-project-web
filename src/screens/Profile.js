@@ -53,8 +53,8 @@ function Profile(props) {
     return(
       (
         userData.completedProfile ?
-        <div style={{display: 'flex', flexDirection: 'column', marginLeft: 50, width: window.innerWidth-200}}>
-          <Image4 style={{marginRight: 180, height: 250, marginTop: 20, display: 'flex', flexDirection: 'column', boxShadow: '0px 1px 5px  0.35px #000',}}>
+        <div style={{display: 'flex', flexDirection: 'column', marginLeft: 50, width: window.innerWidth-200, marginRight: 120}}>
+          <Image4 style={{height: 250, marginTop: 20, display: 'flex', flexDirection: 'column', boxShadow: '0px 1px 5px  0.35px #000',}}>
             <div style={{width: '100%', height: 170, display: 'flex', flexDirection: 'row', marginTop: 'auto', backgroundColor: '#fff', boxShadow: '0px 0.5px 0.5px  0px #000'}}>
               <div style={{width: '49.5%', display: 'flex', flexDirection: 'column'}}>
                 <Image style={{width: 90, height: 90, marginLeft: 40, marginTop: -45, border: '6px solid white', borderRadius: 50}} src={require("../assets/images/profileicon.png")}/>

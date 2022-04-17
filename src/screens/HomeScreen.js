@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import {Motion, spring} from 'react-motion';
 import { useHistory } from "react-router-dom";
 import Button from "../components/Button";
 import Button2 from "../components/Button2";
@@ -11,18 +10,12 @@ function HomeScreen(props) {
 
   const history = useHistory();
 
-  const [show1, setShow1] = useState(false);
-  const [show2, setShow2] = useState(false);
-  const [show3, setShow3] = useState(false);
-
   const [hover1, setHover1] = useState('#eeebdd');
   const [hover2, setHover2] = useState('#eeebdd');
   const [hover3, setHover3] = useState('#eeebdd');
   const [hover4, setHover4] = useState('#eeebdd');
   const [hover5, setHover5] = useState('#eeebdd');
   const [hover6, setHover6] = useState('#eeebdd');
-
-  //localStorage.clear()
 
   const [user, setUser] = useState(null)
 
@@ -67,10 +60,8 @@ function HomeScreen(props) {
             </div>
           </div>
       </div>
-      <div id="About" onMouseOver={() => setShow3(true)} style={{display: 'flex', flexDirection: 'column', height: 450, width: '100%', justifyContent: 'center'}}>
-        {show3 ? <Motion defaultStyle={{x1: 0, x2: 50}} style={{x1: spring(1, {stiffness: 30, damping: 11}), x2: spring(0, {stiffness: 30, damping: 11})}}>
-        {value =>
-          <div style={{width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: value.x2, opacity: value.x1}}>
+      <div id="About" style={{display: 'flex', flexDirection: 'column', height: 450, width: '100%', justifyContent: 'center'}}>
+          <div style={{width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
             <div style={{display: 'flex', flexDirection: 'column', marginLeft: 230, marginRight: 100}}>
               <label style={{color: '#000', fontFamily: 'Archivo', fontSize: 23}}>About Appname</label>
               <label  style={{color: '#000', fontFamily: 'Archivo', fontSize: 18, marginTop: 20}}>Use this long-form section to really paint a picture of the before and after. What’s the problem you’re solving? What’s the benefit people are getting?</label>
@@ -78,14 +69,9 @@ function HomeScreen(props) {
             </div>
             <Image src={require('../assets/images/doctorss.png')} style={{height: 400, marginRight: 100}}/>
           </div>
-        }
-        </Motion>
-        : null}
       </div>
-      <div onMouseOver={() => setShow2(true)} style={{display: 'flex', flexDirection: 'column', height: 450, backgroundColor: '#f7f7f7', width: '100%', justifyContent: 'center'}}>
-        {show2 ? <Motion defaultStyle={{x1: 0, x2: 50}} style={{x1: spring(1, {stiffness: 30, damping: 11}), x2: spring(0, {stiffness: 30, damping: 11})}}>
-        {value =>
-          <div style={{width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: value.x2, opacity: value.x1}}>
+      <div style={{display: 'flex', flexDirection: 'column', height: 450, backgroundColor: '#f7f7f7', width: '100%', justifyContent: 'center'}}>
+          <div style={{width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
             <Image src={require('../assets/images/family.png')} style={{height: 400, marginLeft: 150}}/>
             <div style={{display: 'flex', flexDirection: 'column', marginLeft: 100, marginRight: 150}}>
               <label style={{color: '#000', fontFamily: 'Archivo', fontSize: 23}}>Keep Your Family Safe</label>
@@ -93,21 +79,13 @@ function HomeScreen(props) {
               <label  style={{color: '#000', fontFamily: 'Archivo', fontSize: 18, marginTop: 20}}>You can also highlight the urgency or exclusivity of your offer. <label style={{fontFamily: 'Archivo'}}>If this is only available on a particular day or for a limited time, make that clear.</label></label>
             </div>
           </div>
-        }
-        </Motion>
-        : null}
       </div>
-      <div onMouseOver={() => setShow1(true)} style={{display: 'flex', flexDirection: 'column', height: 700, width: '100%', justifyContent: 'center'}}>
-        {show1 ? <Motion defaultStyle={{x1: 0, x2: 50}} style={{x1: spring(1, {stiffness: 30, damping: 11}), x2: spring(0, {stiffness: 30, damping: 11})}}>
-        {value =>
-          <div style={{marginTop: value.x2, opacity: value.x1, width: '100%', alignItems: 'center', display: 'flex', flexDirection: 'column'}}>
+      <div style={{display: 'flex', flexDirection: 'column', height: 700, width: '100%', justifyContent: 'center'}}>
+          <div style={{width: '100%', alignItems: 'center', display: 'flex', flexDirection: 'column'}}>
             <text style={{fontSize: 35, fontFamily: 'Archivo', color: '#1b1717', marginTop: 20}}>STAY IN TOUCH WITH A HEALTHCARE PROFESSIONAL</text>
             <text style={{fontSize: 20, fontFamily: 'Archivo', color: '#1b1717', marginTop: 20, textAlign: 'center', marginLeft: 200, marginRight: 200}}>Chat with one of our healthcare professionals to stay up-to-date with your health condition and get the required medical assistance.</text>
             <Image src={require('../assets/images/connect.png')} style={{height: 500}}/>
           </div>
-        }
-        </Motion>
-        : null }
       </div>
       <Footer />
     </div>

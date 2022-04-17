@@ -22,6 +22,7 @@ function ReportSymptoms(props) {
         setUser(user)
       } else {
         // User is signed out
+        history.push('/')
       }
     });
 
@@ -65,19 +66,17 @@ function ReportSymptoms(props) {
           formData.append('fever', fever ? '1' : '0')
           formData.append('cough', cough ? '1' : '0')
           formData.append('age_60_and_above', getAge(new Date(props.location.user.dateOfBirth)) >= 60 ? '1' : '0')
-          const response = await fetch('https://corona-prediction-app.herokuapp.com/predict', {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Headers': "*"
-              },
-            body: formData
-          });
-          const json = await response.json();
-          console.log(json)
+          // const response = await fetch('https://corona-prediction-app.herokuapp.com/predict', {
+          //   method: 'POST',
+          //   mode: 'cors',
+          //   headers: {
+          //       Accept: 'application/json',
+          //       'Content-Type': 'application/json',
+          //     },
+          //   body: formData
+          // });
+          // const json = await response.json();
+          // console.log(json)
           let symptoms = props.location.user.symptoms
           let sympObj = {
             contact: contact,
@@ -86,7 +85,7 @@ function ReportSymptoms(props) {
             throat: throat,
             cough: cough,
             fever: fever,
-            //diagnosis: json.corona_result,
+            diagnosis: "0",
             other: other ? otherSymptoms : '',
             reportedAt: new Date().toLocaleString()
           }

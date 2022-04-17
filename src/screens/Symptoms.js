@@ -41,6 +41,7 @@ function Symptoms(props) {
       setUser(user)
     } else {
       // User is signed out
+      history.push('/')
     }
   });
 
@@ -71,8 +72,8 @@ function Symptoms(props) {
                 })} style={{width: 240, height: 40, marginTop: 20, alignSelf: 'center', marginRight: 120}} title={'Report Symptoms'}/>
               </div>
               :     
-              <div style={{display: 'flex', flexDirection: 'column', marginLeft: 50, width: window.innerWidth-200}}>
-                <div style={{display: 'flex', flexDirection: 'row', alignSelf: 'center', marginRight: 120, marginTop: 20, alignItems: 'center', justifyContent: 'center'}}>
+              <div style={{display: 'flex', flexDirection: 'column', marginLeft: 50, width: window.innerWidth-200, marginRight: 120}}>
+                <div style={{display: 'flex', flexDirection: 'row', alignSelf: 'center', marginTop: 20, alignItems: 'center', justifyContent: 'center'}}>
                   <label style={{fontSize: 30, fontFamily: 'Archivo', color: '#1b1717'}}>Reported Symptoms</label>
                   <RedButton onClick={() => history.push({
                     pathname: '/report/symptoms',
@@ -80,7 +81,7 @@ function Symptoms(props) {
                   })} style={{width: 30, height: 30, marginLeft: 10}} title={'+'}/>
                 </div>
                 {arr.map((symptom, index) => (
-                  <div key={index} style={{border: '2px #1b1717 solid', display: 'flex', flexDirection: 'column', marginRight: 120, borderRadius: 15, marginTop: 20}}>
+                  <div key={index} style={{border: '2px #1b1717 solid', display: 'flex', flexDirection: 'column', borderRadius: 15, marginTop: 20}}>
                     <text style={{color: '#1b1717', fontSize: 15, fontFamily: 'Archivo', marginTop: 15, marginLeft: 10}}>Contact with Infected Person: <text style={{color: symptom.contact ? 'green' : 'red', fontFamily: 'roboto-700'}}>{symptom.contact ? 'Yes' : 'No'}</text></text>
                     <text style={{color: '#1b1717', fontSize: 15, fontFamily: 'Archivo', marginTop: 15, marginLeft: 10}}>Cough: <text style={{color: symptom.cough ? 'green' : 'red', fontFamily: 'roboto-700'}}>{symptom.cough ? 'Yes' : 'No'}</text></text>
                     <text style={{color: '#1b1717', fontSize: 15, fontFamily: 'Archivo', marginTop: 15, marginLeft: 10}}>Headache: <text style={{color: symptom.headache ? 'green' : 'red', fontFamily: 'roboto-700'}}>{symptom.headache ? 'Yes' : 'No'}</text></text>
@@ -117,7 +118,7 @@ function Symptoms(props) {
             <label onMouseEnter={() => setHover4('#810000')} onMouseLeave={() => setHover4('#1b1717')} style={{fontFamily: 'Archivo', cursor: 'pointer', marginTop: 10, fontSize: 15, color: hover4}} onClick={() => history.push('/profile/doctors')}>Doctors</label>
             <label onMouseEnter={() => setHover5('#810000')} onMouseLeave={() => setHover5('#1b1717')} style={{fontFamily: 'Archivo', cursor: 'pointer', marginTop: 10, fontSize: 15, color: hover5}} onClick={() => history.push('/profile/messages')}>Messages</label>
             <div style={{height: 3, width: 60, backgroundColor: '#CE1212', marginTop: 10}}/>
-            <label onMouseEnter={() => setHover6('#810000')} onMouseLeave={() => setHover6('#1b1717')} style={{fontFamily: 'Archivo', cursor: 'pointer', marginTop: 10, fontSize: 15, color: hover6}} onClick={() => {signOut(auth).then(() => {history.push('/');})}}>Log Out</label>
+            <label onMouseEnter={() => setHover6('#810000')} onMouseLeave={() => setHover6('#1b1717')} style={{fontFamily: 'Archivo', cursor: 'pointer', marginTop: 10, fontSize: 15, color: hover6}} onClick={() => {signOut(auth)}}>Log Out</label>
           </div>
             {loading ?
               <div div style={{display: 'flex', flexDirection: 'column', marginLeft: 50, width: window.innerWidth-200, alignItems: 'center', marginRight: 120, justifyContent: 'center', height: 400}}>

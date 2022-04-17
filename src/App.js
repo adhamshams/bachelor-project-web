@@ -10,6 +10,7 @@ import Vitals from './screens/Vitals';
 import Symptoms from './screens/Symptoms';
 import ReportSymptoms from './screens/ReportSymptoms';
 import Doctors from './screens/Doctors';
+import Messages from './screens/Messages';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route exact path='/profile/vitals' component={Vitals} />
         <Route exact path='/profile/symptoms' component={Symptoms} />
         <Route exact path='/profile/doctors' component={Doctors} />
+        <Route exact path='/profile/messages' component={Messages} />
         <Route exact path='/report/symptoms' component={ReportSymptoms} />
       </Switch>
     </Router>

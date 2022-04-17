@@ -398,8 +398,8 @@ function SignUp(props) {
             <label style={{fontFamily: 'Archivo', fontSize: 13, marginBottom: 40, marginTop: 40}}>By creating an account you are agreeing to the Appname programme rules and our privacy policy.</label>
           </div>
           <div style={{display: 'flex', flexDirection: 'column', width: '40%', alignItems: 'center'}}>
-            <Logo src={require("../assets/images/signup.jpg")} style={{width: '93%', height: 240, marginTop: 20}}/>
-            <div style={{width: '80%', height: 300, boxShadow: '0px 1px 5px  0.35px #000', marginTop: -20, zIndex: 1000, backgroundColor: '#fff', display: 'flex', flexDirection: 'column'}}>
+            <Logo src={require("../assets/images/signup.jpg")} style={{width: 240, height: 240, marginTop: 20}}/>
+            <div style={{width: '80%', height: 300, boxShadow: '0px 1px 5px  0.35px #000', marginTop: 0, zIndex: 1000, backgroundColor: '#fff', display: 'flex', flexDirection: 'column'}}>
               <label style={{fontFamily: 'Archivo', fontSize: 26, marginLeft: 20, marginTop: 30}}>Change the way you <br/>take care of your health</label>
               <div style={{width: 40, marginTop: 20, marginLeft: 20, height: 3, backgroundColor: '#CE1212'}}/>
               <label style={{marginLeft: 20, marginTop: 20, fontFamily: 'Archivo', marginRight: 20}}>It costs nothing to join - just complete this application form and start enjoying the digital healthcare. Connect with a health care professional at any time and get medical advise anytime anywhere.</label>
