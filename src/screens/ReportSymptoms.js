@@ -4,7 +4,7 @@ import RedButton from "../components/RedButton";
 import Switch from "react-switch";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import axios from 'axios'
+//import axios from 'axios'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {updateDoc, doc} from 'firebase/firestore'
 import { db } from '../firebase'
