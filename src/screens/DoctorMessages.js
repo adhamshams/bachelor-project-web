@@ -100,13 +100,13 @@ function DoctorMessages(props) {
                     :
                     <div style={{flex: 1, display: 'flex', flexDirection: 'column'}}>
                         <div style={{width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-                            <Image src={require('../assets/images/profileicon.png')} style={{width: 30, height: 28, borderRadius: 500, marginLeft: 10}}/>
+                            <Image src={require('../assets/images/profileicon.png')} style={{width: 30, height: 30, borderRadius: 500, marginLeft: 10}}/>
                             <text style={{fontFamily: 'roboto-700', fontSize: 15, marginLeft: 10}}>{selectedChat.user.firstName} {selectedChat.user.lastName}</text>
                             <Image src={require('../assets/images/info.png')} style={{width: 33, marginLeft: 'auto', cursor: 'pointer', marginRight: 20}}/>
                         </div>
                         <div id="chat" style={{height: 500, display: 'flex', flexDirection: 'column', overflowY: 'scroll'}}>
                             {selectedChat.messages.map((message, index) => (
-                                <div key={index} style={{backgroundColor: message.author.id === user.uid ? '#5463FF' : '#1B1717', borderRadius: 20, maxWidth: 200, display: 'flex', marginTop: 5, marginLeft: message.author.id === user.uid ? "auto" : 10, marginRight: 10}}>
+                                <div key={index} style={{backgroundColor: message.author.id === user.uid ? '#5463FF' : '#1B1717', borderRadius: 20, maxWidth: 200, display: 'flex', marginTop: 5, marginLeft: message.author.id === user.uid ? "auto" : 10, marginRight: message.author.id !== user.uid ? "auto" : 10}}>
                                     <label style={{color: '#eeebdd', fontSize: 18, fontFamily: 'Archivo', marginTop: 10, marginBottom: 10, marginLeft: 10, marginRight: 10}}>{message.text}</label>
                                 </div>
                             ))} 

@@ -119,7 +119,7 @@ function Messages(props) {
                         </div>
                         <div id="chat" style={{height: 500, display: 'flex', flexDirection: 'column', overflowY: 'scroll'}}>
                             {selectedChat.messages.map((message, index) => (
-                                <div key={index} style={{backgroundColor: message.author.id === user.uid ? '#CE1212' : '#1B1717', borderRadius: 20, maxWidth: 200, display: 'flex', marginTop: 5, marginLeft: message.author.id === user.uid ? "auto" : 10, marginRight: 10}}>
+                                <div key={index} style={{backgroundColor: message.author.id === user.uid ? '#CE1212' : '#1B1717', borderRadius: 20, maxWidth: 200, display: 'flex', marginTop: 5, marginLeft: message.author.id === user.uid ? "auto" : 10, marginRight: message.author.id !== user.uid ? "auto" : 10}}>
                                     <label style={{color: '#eeebdd', fontSize: 18, fontFamily: 'Archivo', marginTop: 10, marginBottom: 10, marginLeft: 10, marginRight: 10}}>{message.text}</label>
                                 </div>
                             ))} 
@@ -149,13 +149,13 @@ function Messages(props) {
         <Header firstName={user.displayName}/>
         <div style={{display: 'flex', flexDirection: 'row', width: '100%'}}>
           <div style={{display: 'flex', flexDirection: 'column', marginLeft: 80, width: 200}}>
-            <label onMouseEnter={() => setHover1('#810000')} onMouseLeave={() => setHover1('#1b1717')} style={{color: hover1, fontFamily: 'Archivo', cursor: 'pointer', marginTop: 20, fontSize: 15}} onClick={() => history.push('/profile/home')}>Home</label>
-            <label onMouseEnter={() => setHover2('#810000')} onMouseLeave={() => setHover2('#1b1717')} style={{fontFamily: 'Archivo', cursor: 'pointer', marginTop: 10, fontSize: 15, color: hover2}} onClick={() => history.push('/profile/vitals')}>My Vitals</label>
-            <label onMouseEnter={() => setHover3('#810000')} onMouseLeave={() => setHover3('#1b1717')} style={{fontFamily: 'Archivo', cursor: 'pointer', marginTop: 10, fontSize: 15, color: hover3}} onClick={() => history.push('/profile/symptoms')}>My Symptoms</label>
-            <label onMouseEnter={() => setHover4('#810000')} onMouseLeave={() => setHover4('#1b1717')} style={{fontFamily: 'Archivo', cursor: 'pointer', marginTop: 10, fontSize: 15, color: hover4}} onClick={() => history.push('/profile/doctors')}>Doctors</label>
-            <label onMouseEnter={() => setHover5('#810000')} onMouseLeave={() => setHover5('#CE1212')} style={{fontFamily: 'Archivo', cursor: 'pointer', marginTop: 10, fontSize: 15, color: hover5}} onClick={() => history.push('/profile/messages')}>Messages</label>
+            <label onMouseEnter={() => setHover1('#810000')} onMouseLeave={() => setHover1('#1b1717')} style={{color: hover1, fontFamily: 'Archivo', cursor: 'pointer', marginTop: 20, fontSize: 15, marginRight: 'auto'}} onClick={() => history.push('/profile/home')}>Home</label>
+            <label onMouseEnter={() => setHover2('#810000')} onMouseLeave={() => setHover2('#1b1717')} style={{fontFamily: 'Archivo', cursor: 'pointer', marginTop: 10, fontSize: 15, color: hover2, marginRight: 'auto'}} onClick={() => history.push('/profile/vitals')}>My Vitals</label>
+            <label onMouseEnter={() => setHover3('#810000')} onMouseLeave={() => setHover3('#1b1717')} style={{fontFamily: 'Archivo', cursor: 'pointer', marginTop: 10, fontSize: 15, color: hover3, marginRight: 'auto'}} onClick={() => history.push('/profile/symptoms')}>My Symptoms</label>
+            <label onMouseEnter={() => setHover4('#810000')} onMouseLeave={() => setHover4('#1b1717')} style={{fontFamily: 'Archivo', cursor: 'pointer', marginTop: 10, fontSize: 15, color: hover4, marginRight: 'auto'}} onClick={() => history.push('/profile/doctors')}>Doctors</label>
+            <label onMouseEnter={() => setHover5('#810000')} onMouseLeave={() => setHover5('#CE1212')} style={{fontFamily: 'Archivo', cursor: 'pointer', marginTop: 10, fontSize: 15, color: hover5, marginRight: 'auto'}} onClick={() => history.push('/profile/messages')}>Messages</label>
             <div style={{height: 3, width: 60, backgroundColor: '#CE1212', marginTop: 10}}/>
-            <label onMouseEnter={() => setHover6('#810000')} onMouseLeave={() => setHover6('#1b1717')} style={{fontFamily: 'Archivo', cursor: 'pointer', marginTop: 10, fontSize: 15, color: hover6}} onClick={() => {signOut(auth)}}>Log Out</label>
+            <label onMouseEnter={() => setHover6('#810000')} onMouseLeave={() => setHover6('#1b1717')} style={{fontFamily: 'Archivo', cursor: 'pointer', marginTop: 10, fontSize: 15, color: hover6, marginRight: 'auto'}} onClick={() => {signOut(auth)}}>Log Out</label>
           </div>
           {loading ?
             <div div style={{display: 'flex', flexDirection: 'column', marginLeft: 50, width: window.innerWidth-200, alignItems: 'center', marginRight: 120, justifyContent: 'center', height: 400}}>
